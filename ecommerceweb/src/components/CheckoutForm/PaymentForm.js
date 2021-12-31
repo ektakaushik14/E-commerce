@@ -11,8 +11,8 @@ export default function PaymentForm({checkoutToken, shippingData, backStep, onCa
     const handleSubmit= async (event, elements, stripe)=>{
         event.preventDefault();
         if(!stripe || !elements) return;
-        const CardElement= elements.getElement(CardElement);
-        const{error, paymentMethod} = await stripe.createPaymentMethod({type:'card', card: CardElement});
+        const cardElement= elements.getElement(CardElement);
+        const{error, paymentMethod} = await stripe.createPaymentMethod({type:'card', card: cardElement});
         if(error){
             console.log(error);
         }else{
@@ -49,7 +49,7 @@ export default function PaymentForm({checkoutToken, shippingData, backStep, onCa
             <Elements stripe={stripePromise}>
                 <ElementsConsumer>
                     {({elements, stripe})=>(
-                        <form onSubmit={(e)=> handleSubmit(e, elements,stripe)}>
+                        <form onSubmit={(e)=> handleSubmit(e, elements, stripe)}>
                             <CardElement />
                             <br /> <br />
                             <div style={{display:'flex' ,justifyContent: 'space-between'}}>

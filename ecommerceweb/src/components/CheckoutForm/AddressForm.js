@@ -28,7 +28,7 @@ export default function AddressForm({checkoutToken, next}) {
     const fetchSubdivisions =async (countryCode)=>{
         const {subdivisions} = await commerce.services.localeListSubdivisions(countries);
         setShippingSubdivisions(subdivisions);
-        setShippingSubdivision(Object.keys(subdivisions[0]));
+        setShippingSubdivision(Object.keys(subdivisions)[0]);
     }
 
     const fetchShippingOptions =async (checkoutTokenId, country, region =null)=>{
@@ -97,8 +97,8 @@ export default function AddressForm({checkoutToken, next}) {
                 </Grid>
                 <br />
                 <div style={{display: 'flex', justifyContent:'space-between'}}>
-                    <button component={Link} to="/cart" variant="outlined">Back to Cart</button>
-                    <button type="submit" variant="outlined">Next</button>
+                    <Button component={Link} to="/cart" variant="outlined">Back to Cart</Button>
+                    <Button type="submit" variant="outlined">Next</Button>
                 </div>
                 </form>
                 </FormProvider>

@@ -6,7 +6,7 @@ export default function Review({checkoutToken}) {
         <div>
             <Typography variant="h6" gutterBottom>Order Summary</Typography>
             <List disablePadding>
-                {checkoutToken.live_items.map((product)=>(
+                {checkoutToken.live.line_items.map((product)=>(
                     <ListItem style={{padding: '10px 0'}} key={product.name}>
                     <ListItemText primary={product.name} secondary={`Quantity: ${product.quantity}`} />
                     <Typography variant="body2">{product.line_total.formatted_with_symbol}</Typography>

@@ -25,8 +25,8 @@ const history= useHistory();
         generateToken();
     }, [cart]);
 
-    const nextStep =()=> setActiveStep((prevActiveStep)=> prevActiveStep +1);
-    const backStep =()=> setActiveStep((prevActiveStep)=> prevActiveStep -1);
+    const nextStep =()=> setActiveStep((prevActiveStep)=> prevActiveStep + 1);
+    const backStep =()=> setActiveStep((prevActiveStep)=> prevActiveStep - 1);
 
     const next=(data)=>{
         setShippingData(data);
@@ -39,7 +39,7 @@ const history= useHistory();
         }, 3000);
     }
 
-    const Confirmation=()=> order.customer ?(
+    let Confirmation=()=> order.customer ?(
         <div>
         <div>
             <Typography variant="h5">Thank you for your purchase, {order.customer.firstName} {order.customer.lastName}</Typography>
@@ -73,7 +73,7 @@ const history= useHistory();
         }
 
     const Form=()=>activeStep ==0
-    ?<AddressForm checkoutToken={checkoutToken} next/>
+    ?<AddressForm checkoutToken={checkoutToken} next={next}/>
     :<PaymentForm shippingData={shippingData} checkoutToken={checkoutToken} nextStep={nextStep} backStep={backStep} onCaptureCheckout={onCaptureCheckout} timeout={timeout} />
 
     return (
